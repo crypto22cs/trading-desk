@@ -1,0 +1,24 @@
+# 挂一笔 post-only 限价单，等待，再按 digest 撤销。
+# 价格低于参考价（买单）或高于参考价（卖单），用来冒烟，不追求成交。
+# 本工具不会把数量悄悄加大到最小名义。按下面的数量，BTC 在 8 万附近名义约 120 USDT0。
+market: BTC-PERP
+side: buy
+size:
+  min: 0.0015
+  max: 0.002
+  step: 0.00005
+price:
+  mode: offset-bps
+  reference: "80000"
+  # 买单向下偏 5%–12%，落在预言机带宽内，且远离盘口。
+  offsetBps:
+    min: 500
+    max: 1200
+  # 测试网可改为 true，用网关中间价代替 reference。paper 永远用 reference。
+  fetchMark: false
+# 冒烟默认不等待。想在界面里看见挂单，改成 15000。
+dwellMs: 0
+# 撤单失败时，委托自己在 5 分钟后过期。
+ttlSec: 300
+schedule:
+  mode: once

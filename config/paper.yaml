@@ -1,0 +1,39 @@
+# 纸面演练。不读私钥，不广播。EIP-712 按 Ink 测试网 chainId 763373 构造。
+mode: paper
+subaccountName: default
+haltFile: .nado/HALT
+stateFile: .nado/status.json
+
+wallets:
+  - id: paper-1
+    address: "0x1111111111111111111111111111111111111111"
+
+markets:
+  BTC-PERP:
+    productId: 2
+    kind: perp
+    priceTick: "1"
+    sizeStep: "0.00005"
+    minNotional: "100"
+    enabled: true
+  ETH-PERP:
+    productId: 4
+    kind: perp
+    priceTick: "0.01"
+    sizeStep: "0.001"
+    minNotional: "100"
+    enabled: true
+  # 2026-10-27 公开 symbols 里没有 INK-USDT0。核对 productId 后再 enabled: true。
+  INK-USDT0:
+    productId: 0
+    kind: spot
+    priceTick: "0.0001"
+    sizeStep: "1"
+    minNotional: "100"
+    enabled: false
+
+caps:
+  maxNotionalPerOrder: "1000"
+  maxNotionalPerHour: "5000"
+  windowMs: 3600000
+  maxWalletsConcurrent: 4

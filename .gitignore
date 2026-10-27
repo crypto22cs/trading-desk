@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.nado/
+.env
+.env.*
+!.env.example
+*.local.yaml
+coverage/
+*.tsbuildinfo
+uploads/
+secrets/

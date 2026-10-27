@@ -1,0 +1,36 @@
+{
+  "name": "nado-auto-desk",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Ink 链 Nado CLOB 的小型自动挂撤工具。默认 paper，测试网优先。",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@10.33.4",
+  "bin": {
+    "nado-auto-desk": "./dist/cli.js"
+  },
+  "scripts": {
+    "dry": "tsx src/cli.ts run --mode paper",
+    "nado": "tsx src/cli.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "build": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@nadohq/client": "0.65.0",
+    "bignumber.js": "11.1.1",
+    "viem": "2.52.0",
+    "yaml": "2.8.1"
+  },
+  "devDependencies": {
+    "@types/node": "22.19.1",
+    "tsx": "4.20.6",
+    "typescript": "5.9.3",
+    "vitest": "3.2.4"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild"]
+  }
+}

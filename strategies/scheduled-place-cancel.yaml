@@ -1,0 +1,31 @@
+# 按调度重复：挂 post-only → 停留 → 按 digest 撤销。
+#
+# 这是你自己账户上的受控活动，用来验证通路或保持有限的挂单行为。
+# 它不会安排两个钱包互相成交，也不是对敲或刷量工具。
+# 用多个钱包制造成交量可能违反 Nado 的服务条款。请先在测试网试，合规由你自己负责。
+#
+# 模板默认 maxOccurrences: 1，只跑一轮。确认无误后删掉该项，才会一直跑到急停。
+market: BTC-PERP
+side: buy
+size:
+  min: 0.0015
+  max: 0.002
+  step: 0.00005
+price:
+  mode: offset-bps
+  reference: "80000"
+  offsetBps:
+    min: 500
+    max: 1200
+  fetchMark: false
+dwellMs:
+  min: 0
+  max: 0
+ttlSec: 120
+schedule:
+  mode: every
+  everyMs: 120000
+  jitterMs:
+    min: 0
+    max: 5000
+  maxOccurrences: 1
